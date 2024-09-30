@@ -1,11 +1,917 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Site</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="OK-Robot is an open framework for a modular system for zero-shot, language conditioned pick-and-drop tasks in arbitrary homes. OK-Robot accomplishes this with a modular design, using 3D VoxelMap for open-vocabulary navigation, AnyGrasp and LangSam for open-vocabulary grasping, and a dropping primitive for placing.">
+    <meta name="keywords"
+        content="Home robotics, Home robots, Robots in home, OK-Robot, Open-knowledge robots, Open source robot learning">
+    <link rel="author" href="https://mahis.life" />
+    <title>OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics</title>
+    <meta property="og:url" content="https://dynamem.github.io/">
+    <meta property="og:image" content="https://ok-robot.github.io/mfiles/preview.gif">
+    <meta property="og:description"
+        content="OK-Robot is an open framework for zero-shot, natural language pick-and-drop system in arbitrary homes.">
+    <meta property="og:title" content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta property="og:site_name"
+        content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta property="og:see_also" content="https://ok-robot.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ok-robot.github.io/">
+    <meta name="twitter:title"
+        content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta name="twitter:description"
+        content="OK-Robot is an open framework for zero-shot, natural language pick-and-drop system in arbitrary homes.">
+    <meta name="twitter:image" content="https://ok-robot.github.io/mfiles/preview.gif">
+    <meta name="twitter:image:alt"
+        content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta name="twitter:site" content="@notmahi">
+    <meta name="twitter:player" content="https://ok-robot.github.io/mfiles/mosaic_extended.mp4">
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:player:stream" content="https://ok-robot.github.io/mfiles/mosaic_extended.mp4">
+    <meta name="twitter:player:stream:content_type" content="video/mp4">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans',
+                sans-serif;
+        }
+
+        .hero-text {
+            font-size: 5rem;
+        }
+
+        .hero-icon {
+            height: 4rem;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-style: italic;
+        }
+
+        .hero-subtext {
+            font-size: 1.5rem;
+        }
+
+        /* Media query for tablet and smaller, make hero text 23vw */
+        @media screen and (max-width: 767px) {
+            .hero-text {
+                font-size: 15vw;
+            }
+
+            .hero-icon {
+                height: 12vw;
+            }
+
+            .hero-subtitle {
+                font-size: 6vw;
+            }
+
+            .hero-subtext {
+                font-size: 4vw;
+            }
+
+            .has-text-success-dark.is-size-4 {
+                font-size: 4.5vw !important;
+            }
+        }
+
+        .nav-link {
+            font-size: 1.25rem;
+        }
+
+        #nav {
+            position: sticky;
+            top: 0;
+        }
+
+        .caption {
+            font-size: 1rem;
+            /* horizontal position overlaid on the previous class */
+            position: relative;
+            text-align: center;
+            left: 0rem;
+            background-color: rgba(22, 49, 68, 0.5);
+            border-radius: 0.25rem;
+        }
+
+        .authors a {
+            text-decoration: underline;
+        }
+
+        video.is-square-video {
+            aspect-ratio: 1 / 1;
+        }
+
+        video.is-loading {
+            background: rgba(0, 0, 0, 0.5) url(mfiles/images/puff.svg) center center no-repeat;
+        }
+
+        #selected_video {
+            aspect-ratio: 16 / 9;
+            max-height: 540px;
+        }
+
+        @media (orientation:landscape) {
+            .hide-on-landscape {
+                display: none;
+            }
+        }
+
+        @media (orientation:portrait) {
+            .hide-on-portrait {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello, world!</h1>
+    <nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
+        <div class="navbar-brand">
+            <a class="navbar-item is-success nav-link is-size-3" href="#">
+                <!-- <span class="icon"><img src="mfiles/logo.svg"></img></span> -->
+                <span>OK-Robot</span>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item link is-info nav-link" href="#videos">
+                    <div class="icon-text">
+                        <span>Videos</span>
+                    </div>
+                </a>
+                <!-- <a class="navbar-item link is-info nav-link" href="#hardware">
+                    <div class="icon-text">
+                        <span>Hardware</span>
+                    </div>
+                </a> -->
+                <!-- <a class="navbar-item link is-info nav-link" href="#dataset">
+                    <div class="icon-text">
+                        <span>Dataset</span>
+                    </div>
+                </a> -->
+                <a class="navbar-item link is-info nav-link" href="#analysis">
+                    <div class="icon-text">
+                        <span>Analysis</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#paper">
+                    <div class="icon-text">
+                        <span>Paper</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#code">
+                    <div class="icon-text">
+                        <span>Code</span>
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <a class="navbar-item link is-info nav-link" href="https://docs.dobb-e.com/contact-us" target="_blank">
+                    <span>Contact us</span>
+                </a>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-info" href="https://discord.gg/wzzZJxqKYC" target="_blank">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <img src="mfiles/discord.svg" style="height: 1.5rem;"></img>
+                                </span>
+                                <span>Questions? Ask on Discord</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="hero is-fullheight-with-navbar">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            OK-Robot
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            An open, modular framework for zero-shot, language conditioned pick-and-drop tasks in
+                            arbitrary homes.
+                        </h2>
+                    </div>
+                    <div class="subtitle  is-size-7-mobile is-size-6-tablet block">
+                        <p class="authors">
+                            <a href="https://leo20021210.github.io/" target="_blank">Peiqi Liu*</a>,
+                            <a href="https://www.linkedin.com/in/yaswanth-kumar-orru/" target="_blank">Yaswanth
+                                Orru*</a>,
+                            <a href="https://jdvakil.github.io/" target="_blank">Jay Vakil</a>,
+                            <a href="https://cpaxton.github.io/" target="_blank">Chris Paxton</a>,
+                            <a href="https://mahis.life" target="_blank">Nur Muhammad "Mahi" Shafiullah<sup>†</sup></a>,
+                            <a href="https://lerrelpinto.com/" target="_blank">Lerrel Pinto<sup>†</sup></a>
+                        </p>
+                        <p class="authors">*: Equal contributions, †: Equal advising</p>
+                    </div>
+                </div>
+                <div class="container block">
+                    <a class="button is-info is-outlined is-responsive" href="#videos">
+                        <span class="icon">
+                            <ion-icon name="videocam-outline"></ion-icon>
+                        </span>
+                        <span>OK-Robot in homes</span>
+                    </a>
+                    <a class="button is-outlined is-responsive" href="#paper">
+                        <span class="icon">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                        </span>
+                        <span>Read the paper</span>
+                    </a>
+                    <a class="button is-outlined is-responsive" target="_blank"
+                        href="https://github.com/ok-robot/ok-robot">
+                        <span class="icon">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </span>
+                        <span>GitHub repo</span>
+                    </a>
+                    <a class="button is-outlined is-responsive" target="_blank" href="https://discord.gg/wzzZJxqKYC">
+                        <span class="icon">
+                            <img src="mfiles/discord-black.svg" style="height: 1.5rem;"></img>
+                        </span>
+                        <span>Discord server</span>
+                    </a>
+                </div>
+                <div class="columns block">
+                    <div class="column">
+                        <figure>
+                            <video muted autoplay playsinline loop controls
+                                src="mfiles/header_video_ultra_ultra_compressed.mp4"></video>
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <figure>
+                            <video muted autoplay playsinline loop controls src="mfiles/mosaic_extended.mp4"></video>
+                        </figure>
+                    </div>
+                </div>
+                <div class="container block columns">
+                    <div class="column">
+                        <div class="subtitle block is-size-4">
+                            <button class="button is-outlined is-responsive" id="expand-abstract">
+                                <span class="icon"><ion-icon name="caret-down-outline"
+                                        id="expand-abstract-icon"></ion-icon></span><span
+                                    id="expand-abstract-text">Expand
+                                    abstract</span></button>
+                        </div>
+                        <div class="is-size-6 block" id="abstract" hidden>
+                            <p>
+                                Remarkable progress has been made in recent years in the fields of vision, language, and
+                                robotics. We now have vision models capable of recognizing objects based on language
+                                queries, navigation systems that can effectively control mobile systems, and grasping
+                                models that can handle a wide range of objects. Despite these advancements,
+                                general-purpose applications of robotics still lag behind, even though they rely on
+                                these fundamental capabilities of recognition, navigation, and grasping. In this paper,
+                                we adopt a systems-first approach to develop a new Open Knowledge-based robotics
+                                framework called OK-Robot. By combining Vision-Language Models (VLMs) for object
+                                detection, navigation primitives for movement, and grasping primitives for object
+                                manipulation, OK-Robot offers a integrated solution for pick-and-drop operations without
+                                requiring any training. To evaluate its performance, we run OK-Robot in 10 real-world
+                                home environments. The results demonstrate that OK-Robot achieves a 58.5% success rate
+                                in open-ended pick-and-drop tasks, representing a new state-of-the-art in Open
+                                Vocabulary Mobile Manipulation (OVMM) with nearly 1.8x the performance of prior work. On
+                                cleaner, uncluttered environments, OK-Robot's performance increases to 82%. However, the
+                                most important insight gained from OK-Robot is the critical role of nuanced details when
+                                combining Open Knowledge systems like VLMs with robotic modules.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="container block columns">
+                    <div class="column">
+                        <div class="subtitle is-size-4">
+                            <span>OK-Robot, in a nutshell:</span>
+                        </div>
+                        <div id="nutshell">
+                            <figure class="hide-on-portrait">
+                                <video style="width:100%" playsinline muted autoplay loop
+                                    src="mfiles/whats_happening_comp.mp4"></video>
+                            </figure>
+                            <figure class="hide-on-landscape">
+                                <video style="width:100%" playsinline muted autoplay loop
+                                    src="mfiles/whats_happening_vert_comp.mp4"></video>
+                            </figure>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Video section -->
+    <section class="hero is-fullheight-with-navbar" id="videos">
+        <div class="hero-body block">
+            <div class="container block">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Videos
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            OK-Robot in action
+                        </h2>
+                    </div>
+                    <div class="subtitle block">
+                        <p class="hero-subtext">
+                            In 10 home environments of New York City, OK-Robot attempted 171 pick-and-drop tasks. Here
+                            are sample
+                            trials from 5 homes, each showing 5 tasks.
+                        </p>
+                    </div>
+                </div>
+                <div class="container block">
+                    <!-- Dropdown for the video selection -->
+                    <div class="columns">
+                        <div class="column is-5">
+                            <div class="select" style="display: block;">
+                                <select id="video-home-selection" style="width: 100%;">
+                                    <!-- <option value="Home 1">Home 1</option> -->
+                                    <option value="Home 2">Home 2</option>
+                                    <!-- <option value="Home 3">Home 3</option> -->
+                                    <!-- <option value="Home 4">Home 4</option>
+                                    <option value="Home 5">Home 5</option> -->
+                                    <option value="Home 6">Home 6</option>
+                                    <option value="Home 7">Home 7</option>
+                                    <option value="Home 8">Home 8</option>
+                                    <!-- <option value="Home 9">Home 9</option> -->
+                                    <option value="Home 10">Home 10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-5">
+                            <div class="select" style="display: block;">
+                                <select id="video-task-selection" style="width: 100%;">
+                                    <option value="0-438">All
+                                    </option>
+                                    <option value="0-79">Detergent Pack to Red Shopping Bag
+                                    </option>
+                                    <option value="85-179">Red Navaratna Oil to Table
+                                    </option>
+                                    <option value="183-275">Blue Moisturizer to Target Bag</option>
+                                    <option value="280-355">Purple Shampoo to White Rack</option>
+                                    <option value="357-438">Orange Package to Dust Bin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <button class="button is-info is-outlined" id="shuffle-button" style="width: 100%;">
+                                <span class="icon">
+                                    <ion-icon name="shuffle-outline"></ion-icon>
+                                </span>
+                                <span>Shuffle</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="block">
+                    <div class="columns is-centered">
+                        <div class="column is-12-mobile is-10-tablet video-holder">
+                            <figure class="">
+                                <style>
+                                    .embed-container {
+                                        position: relative;
+                                        padding-bottom: 56.25%;
+                                        height: 0;
+                                        overflow: hidden;
+                                        max-width: 100%;
+                                    }
+
+                                    .embed-container iframe,
+                                    .embed-container object,
+                                    .embed-container embed {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                </style>
+                                <div class='embed-container'><iframe id="youtube-embed"
+                                        src='https://www.youtube.com/embed/-A2vuqFizZQ?fs=0&modestbranding=1&playsinline=1&rel=0&color=white'
+                                        frameborder='0' showinfo='0' allowfullscreen></iframe></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-fullheight-with-navbar" id="analysis">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Analysis
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Understanding the performance of OK-Robot
+                        </h2>
+                    </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <figure class="block">
+                                <img src="mfiles/images/sankey_failure_modes.png"
+                                    alt="A sankey diagram showing the analysis of success and failure modes of OK-Robot." />
+                            </figure>
+                            <p class="block hero-subtext">
+                                While our method can show zero-shot generalization in
+                                completely new environments, we probe OK-Robot to better
+                                understand when and how it succeeds and fails.
+                                While we find a 58.5% success rate at completely novel homes, at a closer look, we
+                                also notice a long tail of failure causes, which is presented in the figure above.
+                                We see that the leading three cause of failures are failing
+                                to retrieve the right object to navigate to from the semantic
+                                memory (9.3%), getting a difficult pose from the manipulation
+                                module (8.0%), and hardware difficulties (7.5%).
+                            </p>
+                            <p class="block hero-subtext">
+                                In the "Understanding the performance
+                                of OK-Robot" section of the paper,
+                                we go over the analysis of the failure modes presented in
+                                the figure above and discuss the most frequent cases.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper -->
+    <section class="hero is-fullheight-with-navbar" id="paper">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Paper
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics
+                        </h2>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-12-mobile">
+                            <a href="https://arxiv.org/abs/2401.12202" target="_blank">
+                                <figure class="image">
+                                    <img src="mfiles/images/paper.jpg" style="max-width: 95vw;" alt="Paper">
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://arxiv.org/abs/2401.12202">
+                                <span class="icon">
+                                    <img src="mfiles/images/arxiv.svg" style="height: 1.5rem;"></img>
+                                </span>
+                                <span>Read the paper (Arxiv)</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="mfiles/paper/ok_robot.pdf">
+                                <span class="icon">
+                                    <ion-icon name="document-text-outline"></ion-icon>
+                                </span>
+                                <span>Read the paper (PDF)</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank" href="more/bibtex.txt">
+                                <span class="icon">
+                                    <ion-icon name="bookmark-outline"></ion-icon>
+                                </span>
+                                <span>Citation (bibtex)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <pre id="citation-text" style="max-width: 90vw; overflow-x: auto;">
+@article{liu2024okrobot,
+  title={OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics},
+  author={Liu, Peiqi and Orru, Yaswanth and Paxton, Chris and Shafiullah, Nur Muhammad Mahi and Pinto, Lerrel},
+  journal={arXiv preprint arXiv:2401.12202},
+  year={2024}
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Code -->
+    <section class="hero is-halfheight" id="code">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Code
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Get the code on github.
+                        </h2>
+                    </div>
+                    <div class="container block">
+                        <div class="columns">
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://github.com/ok-robot/ok-robot">
+                                    <span class="icon">
+                                        <ion-icon name="logo-github"></ion-icon>
+                                    </span>
+                                    <span>GitHub repo</span>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://github.com/ok-robot/ok-robot/tree/main/docs">
+                                    <span class="icon">
+                                        <ion-icon name="book-outline"></ion-icon>
+                                    </span>
+                                    <span>Documentation</span>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://discord.gg/wzzZJxqKYC">
+                                    <span class="icon">
+                                        <img src="mfiles/discord-black.svg" style="height: 1.5rem;"></img>
+                                    </span>
+                                    <span>Questions? Ask on Discord</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>OK-Robot</strong> by <a href="https://mahis.life">Mahi Shafiullah</a>.
+                The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+                website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                The
+                website template is taken from <a href="https://dobb-e.com">Dobb·E</a>.
+            </p>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
+<script>
+    const videoData = [
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Purple Medicine",
+            "Placing Object": "Chair",
+            "ST": 0,
+            "ET": 70
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Eye glass Case",
+            "Placing Object": "Chair",
+            "ST": 73,
+            "ET": 149
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Grey Rag",
+            "Placing Object": "Sink",
+            "ST": 152,
+            "ET": 226
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Golden Can",
+            "Placing Object": "Table",
+            "ST": 229,
+            "ET": 306
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Mouth Spray",
+            "Placing Object": "Countertop",
+            "ST": 310,
+            "ET": 390
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Toy Bear",
+            "Placing Object": "Bed",
+            "ST": 0,
+            "ET": 79
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Apple Juice",
+            "Placing Object": "Box",
+            "ST": 81,
+            "ET": 155
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Paper Towel",
+            "Placing Object": "Blue Box",
+            "ST": 158,
+            "ET": 225
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Herbal Tea",
+            "Placing Object": "Box",
+            "ST": 228,
+            "ET": 295
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Earphone Box",
+            "Placing Object": "Blue Box",
+            "ST": 296,
+            "ET": 374
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Taki Chips",
+            "Placing Object": "Countertop",
+            "ST": 2,
+            "ET": 74
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Blue Gloves",
+            "Placing Object": "Sink",
+            "ST": 77,
+            "ET": 150
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Bandage Box",
+            "Placing Object": "Dust Bin",
+            "ST": 152,
+            "ET": 214
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "White Aerosol",
+            "Placing Object": "Trash Can",
+            "ST": 224,
+            "ET": 288
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Peanut Butter",
+            "Placing Object": "Countertop",
+            "ST": 290,
+            "ET": 364
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Brown Box",
+            "Placing Object": "Chair",
+            "ST": 1,
+            "ET": 90
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Cough Syrup",
+            "Placing Object": "Shelf",
+            "ST": 94,
+            "ET": 178
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Axe Body Spray",
+            "Placing Object": "Shelf",
+            "ST": 182,
+            "ET": 273
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Red Deodorant",
+            "Placing Object": "Bed",
+            "ST": 276,
+            "ET": 353
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Green Tea Packet",
+            "Placing Object": "Basket",
+            "ST": 356,
+            "ET": 431
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Detergent Pack",
+            "Placing Object": "Red Shopping Bag",
+            "ST": 0,
+            "ET": 79
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Red Navaratna Oil",
+            "Placing Object": "Table",
+            "ST": 85,
+            "ET": 179
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Blue Moisturizer",
+            "Placing Object": "Target Bag",
+            "ST": 183,
+            "ET": 275
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Purple Shampoo",
+            "Placing Object": "White Rack",
+            "ST": 280,
+            "ET": 355
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Orange Package",
+            "Placing Object": "Dust Bin",
+            "ST": 357,
+            "ET": 438
+        }
+    ];
+    // Create a mapping from env name to array of slices.
+    const taskRollouts = {};
+    videoData.forEach((video) => {
+        if (!(video.Environment in taskRollouts)) {
+            taskRollouts[video.Environment] = [];
+        }
+        taskRollouts[video.Environment].push(video);
+    });
+    const YTVideoPrefix = "https://www.youtube.com/embed/";
+    const YTVideoSuffix = "?autoplay=1&fs=0&modestbranding=1&playsinline=1&rel=0&color=white";
+    const YTVideoID = {
+        "Home 2": "-A2vuqFizZQ",
+        "Home 6": "G7SBA5roNhI",
+        "Home 7": "tk0IJikYL2k",
+        "Home 8": "-zENt82QPEA",
+        "Home 10": "lQszLfsUWJk",
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+
+        const $navbarItems = Array.prototype.slice.call(document.querySelectorAll('.navbar-item'), 0);
+        $navbarItems.forEach(el => {
+            el.addEventListener('click', () => {
+                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+                $navbarBurgers.forEach(el => {
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    el.classList.remove('is-active');
+                    $target.classList.remove('is-active');
+                });
+            });
+        });
+
+
+        // Add listeners for the video selection.
+        const taskSelection = document.getElementById('video-task-selection');
+        const homeSelection = document.getElementById('video-home-selection');
+        const videoSelection = document.getElementById('youtube-embed');
+        taskSelection.addEventListener("change", function (event) {
+            const task = event.target.value;
+            const home = homeSelection.value;
+            const properHomeName = homeSelection.value;
+            // Calculate start, end from the value.
+            const [start, end] = task.split('-');
+            const videoSelection = document.getElementById('youtube-embed');
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}&start=${start}&end=${end}`;
+        });
+
+        function updateTaskList(home) {
+            const videos = taskRollouts[home];
+            // Now change the options for task selection
+            const taskSelection = document.getElementById('video-task-selection');
+            taskSelection.innerHTML = '';
+
+            const option = document.createElement('option');
+            option.value = `0-${videos[4].ET}`;
+            option.innerText = `All`;
+            taskSelection.appendChild(option);
+            videos.forEach((video) => {
+                const option = document.createElement('option');
+                option.value = `${video.ST}-${video.ET}`;
+                option.innerText = `${video["Picking Object"]} to ${video["Placing Object"]}`;
+                taskSelection.appendChild(option);
+            });
+            return videos[0];
+        }
+        homeSelection.addEventListener("change", function (event) {
+            const properHomeName = this.value;
+            video = updateTaskList(properHomeName);
+            const videoSelection = document.getElementById('youtube-embed');
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
+        });
+
+        // Add shuffle option
+        function shuffleVideo() {
+            const randomHome = Object.keys(YTVideoID)[Math.floor(Math.random() * Object.keys(YTVideoID).length)];
+            const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
+            const videoSelection = document.getElementById('youtube-embed');
+            homeSelection.value = randomTask.Environment;
+            updateTaskList(randomTask.Environment);
+            taskSelection.value = `${randomTask.ST}-${randomTask.ET}`;
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}&start=${randomTask.ST}&end=${randomTask.ET}`;
+        }
+        shuffleVideo();
+        const shuffleButton = document.getElementById('shuffle-button');
+        shuffleButton.addEventListener('click', shuffleVideo);
+        // Toggle abstract when expand button is clicked
+        const expandButton = document.getElementById('expand-abstract');
+        const expandButtonText = document.getElementById('expand-abstract-text');
+        const expandButtonIcon = document.getElementById('expand-abstract-icon');
+        const abstract = document.getElementById('abstract');
+        expandButton.addEventListener('click', function (event) {
+            abstract.hidden = !abstract.hidden;
+            if (abstract.hidden) {
+                expandButtonText.innerText = 'Show abstract';
+                expandButtonIcon.name = "caret-down-outline";
+            } else {
+                expandButtonText.innerText = 'Hide abstract';
+                expandButtonIcon.name = "caret-forward-outline";
+            }
+        });
+    });
+
+    document.getElementById('citation-text').addEventListener('click', function () {
+        if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNodeContents(this);
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    });
+
+</script>
+
 </html>
