@@ -519,15 +519,15 @@
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="content">
+                    <div class="content">
                         <pre id="citation-text" style="max-width: 90vw; overflow-x: auto;">
-@article{liu2024okrobot,
+<!-- @article{liu2024okrobot,
   title={OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics},
   author={Liu, Peiqi and Orru, Yaswanth and Paxton, Chris and Shafiullah, Nur Muhammad Mahi and Pinto, Lerrel},
   journal={arXiv preprint arXiv:2401.12202},
   year={2024}
-}
-</pre> -->
+} -->
+</pre>
                     </div>
                 </div>
             </div>
@@ -679,12 +679,23 @@
 
 
         // Add listeners for the video selection.
-        const taskSelection = document.getElementById('video-task-selection');
+        // const taskSelection = document.getElementById('video-task-selection');
+        // const homeSelection = document.getElementById('video-home-selection');
+        // const videoSelection = document.getElementById('youtube-embed');
+        // taskSelection.addEventListener("change", function (event) {
+        //     const task = event.target.value;
+        //     const home = homeSelection.value;
+        //     const properHomeName = homeSelection.value;
+        //     // Calculate start, end from the value.
+        //     const [start, end] = task.split('-');
+        //     const videoSelection = document.getElementById('youtube-embed');
+        //     videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}&start=${start}&end=${end}`;
+        // });
+
         const homeSelection = document.getElementById('video-home-selection');
         const videoSelection = document.getElementById('youtube-embed');
-        taskSelection.addEventListener("change", function (event) {
-            const task = event.target.value;
-            const home = homeSelection.value;
+        homeSelection.addEventListener("change", function (event) {
+            const home = event.target.value;
             const properHomeName = homeSelection.value;
             // Calculate start, end from the value.
             const [start, end] = task.split('-');
@@ -718,18 +729,18 @@
         });
 
         // Add shuffle option
-        function shuffleVideo() {
-            const randomHome = Object.keys(YTVideoID)[Math.floor(Math.random() * Object.keys(YTVideoID).length)];
-            const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
-            const videoSelection = document.getElementById('youtube-embed');
-            homeSelection.value = randomTask.Environment;
-            updateTaskList(randomTask.Environment);
-            taskSelection.value = `${randomTask.ST}-${randomTask.ET}`;
-            videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}&start=${randomTask.ST}&end=${randomTask.ET}`;
-        }
-        shuffleVideo();
-        const shuffleButton = document.getElementById('shuffle-button');
-        shuffleButton.addEventListener('click', shuffleVideo);
+        // function shuffleVideo() {
+        //     const randomHome = Object.keys(YTVideoID)[Math.floor(Math.random() * Object.keys(YTVideoID).length)];
+        //     const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
+        //     const videoSelection = document.getElementById('youtube-embed');
+        //     homeSelection.value = randomTask.Environment;
+        //     updateTaskList(randomTask.Environment);
+        //     taskSelection.value = `${randomTask.ST}-${randomTask.ET}`;
+        //     videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}&start=${randomTask.ST}&end=${randomTask.ET}`;
+        // }
+        // shuffleVideo();
+        // const shuffleButton = document.getElementById('shuffle-button');
+        // shuffleButton.addEventListener('click', shuffleVideo);
         // Toggle abstract when expand button is clicked
         const expandButton = document.getElementById('expand-abstract');
         const expandButtonText = document.getElementById('expand-abstract-text');
@@ -747,15 +758,15 @@
         });
     });
 
-    document.getElementById('citation-text').addEventListener('click', function () {
-        if (window.getSelection) {
-            var range = document.createRange();
-            range.selectNodeContents(this);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-        }
-    });
+    // document.getElementById('citation-text').addEventListener('click', function () {
+    //     if (window.getSelection) {
+    //         var range = document.createRange();
+    //         range.selectNodeContents(this);
+    //         var selection = window.getSelection();
+    //         selection.removeAllRanges();
+    //         selection.addRange(range);
+    //     }
+    // });
 
 </script>
 
