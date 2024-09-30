@@ -286,8 +286,8 @@
                         </div>
                         <div class="is-size-6 block" id="abstract" hidden>
                             <p>
-                                Significant progress has been made in open-
-                                vocabulary mobile manipulation, where the goal is for a robot
+                                Significant progress has been made in open-vocabulary
+                                mobile manipulation, where the goal is for a robot
                                 to perform tasks in any environment given a natural language
                                 description. However, most current systems assume a static
                                 environment, which limits the system's applicability in real-
@@ -698,32 +698,33 @@
             const home = event.target.value;
             const properHomeName = homeSelection.value;
             // Calculate start, end from the value.
-            const [start, end] = task.split('-');
+            // const [start, end] = task.split('-');
             const videoSelection = document.getElementById('youtube-embed');
-            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}&start=${start}&end=${end}`;
+            // videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}&start=${start}&end=${end}`;
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
         });
 
-        function updateTaskList(home) {
-            const videos = taskRollouts[home];
-            // Now change the options for task selection
-            const taskSelection = document.getElementById('video-task-selection');
-            taskSelection.innerHTML = '';
+        // function updateTaskList(home) {
+        //     const videos = taskRollouts[home];
+        //     // Now change the options for task selection
+        //     const taskSelection = document.getElementById('video-task-selection');
+        //     taskSelection.innerHTML = '';
 
-            const option = document.createElement('option');
-            option.value = `0-${videos[4].ET}`;
-            option.innerText = `All`;
-            taskSelection.appendChild(option);
-            videos.forEach((video) => {
-                const option = document.createElement('option');
-                option.value = `${video.ST}-${video.ET}`;
-                option.innerText = `${video["Picking Object"]} to ${video["Placing Object"]}`;
-                taskSelection.appendChild(option);
-            });
-            return videos[0];
-        }
+        //     const option = document.createElement('option');
+        //     option.value = `0-${videos[4].ET}`;
+        //     option.innerText = `All`;
+        //     taskSelection.appendChild(option);
+        //     videos.forEach((video) => {
+        //         const option = document.createElement('option');
+        //         option.value = `${video.ST}-${video.ET}`;
+        //         option.innerText = `${video["Picking Object"]} to ${video["Placing Object"]}`;
+        //         taskSelection.appendChild(option);
+        //     });
+        //     return videos[0];
+        // }
         homeSelection.addEventListener("change", function (event) {
             const properHomeName = this.value;
-            video = updateTaskList(properHomeName);
+            // video = updateTaskList(properHomeName);
             const videoSelection = document.getElementById('youtube-embed');
             videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
         });
