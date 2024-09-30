@@ -605,183 +605,29 @@
 </body>
 
 <script>
-    // const videoData = [
-    //     {
-    //         "Environment": "Home 6",
-    //         "Picking Object": "Purple Medicine",
-    //         "Placing Object": "Chair",
-    //         "ST": 0,
-    //         "ET": 70
-    //     },
-    //     {
-    //         "Environment": "Home 6",
-    //         "Picking Object": "Eye glass Case",
-    //         "Placing Object": "Chair",
-    //         "ST": 73,
-    //         "ET": 149
-    //     },
-    //     {
-    //         "Environment": "Home 6",
-    //         "Picking Object": "Grey Rag",
-    //         "Placing Object": "Sink",
-    //         "ST": 152,
-    //         "ET": 226
-    //     },
-    //     {
-    //         "Environment": "Home 6",
-    //         "Picking Object": "Golden Can",
-    //         "Placing Object": "Table",
-    //         "ST": 229,
-    //         "ET": 306
-    //     },
-    //     {
-    //         "Environment": "Home 6",
-    //         "Picking Object": "Mouth Spray",
-    //         "Placing Object": "Countertop",
-    //         "ST": 310,
-    //         "ET": 390
-    //     },
-    //     {
-    //         "Environment": "Home 7",
-    //         "Picking Object": "Toy Bear",
-    //         "Placing Object": "Bed",
-    //         "ST": 0,
-    //         "ET": 79
-    //     },
-    //     {
-    //         "Environment": "Home 7",
-    //         "Picking Object": "Apple Juice",
-    //         "Placing Object": "Box",
-    //         "ST": 81,
-    //         "ET": 155
-    //     },
-    //     {
-    //         "Environment": "Home 7",
-    //         "Picking Object": "Paper Towel",
-    //         "Placing Object": "Blue Box",
-    //         "ST": 158,
-    //         "ET": 225
-    //     },
-    //     {
-    //         "Environment": "Home 7",
-    //         "Picking Object": "Herbal Tea",
-    //         "Placing Object": "Box",
-    //         "ST": 228,
-    //         "ET": 295
-    //     },
-    //     {
-    //         "Environment": "Home 7",
-    //         "Picking Object": "Earphone Box",
-    //         "Placing Object": "Blue Box",
-    //         "ST": 296,
-    //         "ET": 374
-    //     },
-    //     {
-    //         "Environment": "Home 8",
-    //         "Picking Object": "Taki Chips",
-    //         "Placing Object": "Countertop",
-    //         "ST": 2,
-    //         "ET": 74
-    //     },
-    //     {
-    //         "Environment": "Home 8",
-    //         "Picking Object": "Blue Gloves",
-    //         "Placing Object": "Sink",
-    //         "ST": 77,
-    //         "ET": 150
-    //     },
-    //     {
-    //         "Environment": "Home 8",
-    //         "Picking Object": "Bandage Box",
-    //         "Placing Object": "Dust Bin",
-    //         "ST": 152,
-    //         "ET": 214
-    //     },
-    //     {
-    //         "Environment": "Home 8",
-    //         "Picking Object": "White Aerosol",
-    //         "Placing Object": "Trash Can",
-    //         "ST": 224,
-    //         "ET": 288
-    //     },
-    //     {
-    //         "Environment": "Home 8",
-    //         "Picking Object": "Peanut Butter",
-    //         "Placing Object": "Countertop",
-    //         "ST": 290,
-    //         "ET": 364
-    //     },
-    //     {
-    //         "Environment": "Home 10",
-    //         "Picking Object": "Brown Box",
-    //         "Placing Object": "Chair",
-    //         "ST": 1,
-    //         "ET": 90
-    //     },
-    //     {
-    //         "Environment": "Home 10",
-    //         "Picking Object": "Cough Syrup",
-    //         "Placing Object": "Shelf",
-    //         "ST": 94,
-    //         "ET": 178
-    //     },
-    //     {
-    //         "Environment": "Home 10",
-    //         "Picking Object": "Axe Body Spray",
-    //         "Placing Object": "Shelf",
-    //         "ST": 182,
-    //         "ET": 273
-    //     },
-    //     {
-    //         "Environment": "Home 10",
-    //         "Picking Object": "Red Deodorant",
-    //         "Placing Object": "Bed",
-    //         "ST": 276,
-    //         "ET": 353
-    //     },
-    //     {
-    //         "Environment": "Home 10",
-    //         "Picking Object": "Green Tea Packet",
-    //         "Placing Object": "Basket",
-    //         "ST": 356,
-    //         "ET": 431
-    //     },
-    //     {
-    //         "Environment": "Home 2",
-    //         "Picking Object": "Detergent Pack",
-    //         "Placing Object": "Red Shopping Bag",
-    //         "ST": 0,
-    //         "ET": 79
-    //     },
-    //     {
-    //         "Environment": "Home 2",
-    //         "Picking Object": "Red Navaratna Oil",
-    //         "Placing Object": "Table",
-    //         "ST": 85,
-    //         "ET": 179
-    //     },
-    //     {
-    //         "Environment": "Home 2",
-    //         "Picking Object": "Blue Moisturizer",
-    //         "Placing Object": "Target Bag",
-    //         "ST": 183,
-    //         "ET": 275
-    //     },
-    //     {
-    //         "Environment": "Home 2",
-    //         "Picking Object": "Purple Shampoo",
-    //         "Placing Object": "White Rack",
-    //         "ST": 280,
-    //         "ET": 355
-    //     },
-    //     {
-    //         "Environment": "Home 2",
-    //         "Picking Object": "Orange Package",
-    //         "Placing Object": "Dust Bin",
-    //         "ST": 357,
-    //         "ET": 438
-    //     }
-    // ];
+    const videoData = [
+        {
+            "Environment": "Home 1",
+            // "Picking Object": "Purple Medicine",
+            // "Placing Object": "Chair",
+            // "ST": 0,
+            // "ET": 70
+        },
+        {
+            "Environment": "Home 2",
+            // "Picking Object": "Eye glass Case",
+            // "Placing Object": "Chair",
+            // "ST": 73,
+            // "ET": 149
+        },
+        {
+            "Environment": "Home 3",
+            // "Picking Object": "Grey Rag",
+            // "Placing Object": "Sink",
+            // "ST": 152,
+            // "ET": 226
+        },
+    ];
     // Create a mapping from env name to array of slices.
     const taskRollouts = {};
     videoData.forEach((video) => {
@@ -790,14 +636,12 @@
         }
         taskRollouts[video.Environment].push(video);
     });
-    const YTVideoPrefix = "https://www.youtube.com/embed/";
-    const YTVideoSuffix = "?autoplay=1&fs=0&modestbranding=1&playsinline=1&rel=0&color=white";
+    const YTVideoPrefix = "https://youtu.be/";
+    const YTVideoSuffix = "";
     const YTVideoID = {
-        "Home 2": "-A2vuqFizZQ",
-        "Home 6": "G7SBA5roNhI",
-        "Home 7": "tk0IJikYL2k",
-        "Home 8": "-zENt82QPEA",
-        "Home 10": "lQszLfsUWJk",
+        "Home 1": "oBHzOfUdRnE",
+        "Home 2": "qXc-HWhMJAo",
+        "Home 3": "sabw032HgDA",
     }
 
 
