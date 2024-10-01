@@ -100,6 +100,12 @@
             top: 0;
         }
 
+        #failure_chart {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .caption {
             font-size: 1rem;
             /* horizontal position overlaid on the previous class */
@@ -445,7 +451,7 @@
                         <div class="subtitle">
                             <figure class="block">
                                 <img src="mfiles/images/overall.png"
-                                    alt="" />
+                                    alt="an illustration of DynaMem" />
                             </figure>
                             <p class="block hero-subtext">
                                 We maintain a feature pointcloud as the robot memory.
@@ -464,6 +470,46 @@
                                 If the text is grounded the environment, the robot will navigate to the target object;
                                 otherwise, the robot memory will be projected into a value map and the robot explores the
                                 environment based on the value map.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-fullheight-with-navbar" id="evaluation">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Evaluation
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Performance of DynaMem
+                        </h2>
+                    </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <figure class="block" id = "failure_chart">
+                                <img src="mfiles/images/failure_analysis.png"
+                                    alt="performance and failure analysis of DynaMem and baselines" />
+                            </figure>
+                            <p class="block hero-subtext">
+                                We evaluate DynaMem in 3 different environments, 10 queries from each environment.
+                                We select OK-Robot (with prescanned static robot memory) and 
+                                Gemini (utilized following the pipeline proposed in OpenEQA) as baselines.
+                            </p>
+                            <p class="block hero-subtext">
+                                We find that both DynaMem and mLLM have a total success rate of 70%. This
+                                is a significant improvement over the OK-Robot system,
+                                which has a total success rate of 30%.
+                                Notably, DynaMem is particularly adept at handling dynamic objects in the environment:
+                                only 6.7% of the trials failed due to our system not being able to navigate to such dynamic objects in the
+                                scene.
                             </p>
                         </div>
                     </div>
