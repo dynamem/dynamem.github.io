@@ -172,9 +172,14 @@
                         <span>Dataset</span>
                     </div>
                 </a> -->
-                <a class="navbar-item link is-info nav-link" href="#results">
+                <a class="navbar-item link is-info nav-link" href="#method">
                     <div class="icon-text">
-                        <span>Results</span>
+                        <span>Method</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#evaluation">
+                    <div class="icon-text">
+                        <span>Evaluation</span>
                     </div>
                 </a>
                 <a class="navbar-item link is-info nav-link" href="#paper">
@@ -422,48 +427,49 @@
         </div>
     </section>
 
-    <section class="hero is-fullheight-with-navbar" id="results">
-        <!-- <div class="hero-body block">
+    <section class="hero is-fullheight-with-navbar" id="method">
+        <div class="hero-body block">
             <div class="container">
                 <div class="container block">
                     <div class="title block">
                         <h1 class="hero-text">
-                            Analysis
+                            Method
                         </h1>
                     </div>
                     <div class="subtitle block">
                         <h2 class="hero-subtitle">
-                            Understanding the performance of OK-Robot
+                            Illustration of DynaMem
                         </h2>
                     </div>
                     <div class="block">
                         <div class="subtitle">
                             <figure class="block">
-                                <img src="mfiles/images/sankey_failure_modes.png"
-                                    alt="A sankey diagram showing the analysis of success and failure modes of OK-Robot." />
+                                <img src="mfiles/images/overall.png"
+                                    alt="" />
                             </figure>
                             <p class="block hero-subtext">
-                                While our method can show zero-shot generalization in
-                                completely new environments, we probe OK-Robot to better
-                                understand when and how it succeeds and fails.
-                                While we find a 58.5% success rate at completely novel homes, at a closer look, we
-                                also notice a long tail of failure causes, which is presented in the figure above.
-                                We see that the leading three cause of failures are failing
-                                to retrieve the right object to navigate to from the semantic
-                                memory (9.3%), getting a difficult pose from the manipulation
-                                module (8.0%), and hardware difficulties (7.5%).
+                                We maintain a feature pointcloud as the robot memory.
+                                When the robot receives a new RGBD observation of the environment,
+                                it adds the newly observed objects and removes the points no longer existing.
                             </p>
                             <p class="block hero-subtext">
-                                In the "Understanding the performance
-                                of OK-Robot" section of the paper,
-                                we go over the analysis of the failure modes presented in
-                                the figure above and discuss the most frequent cases.
+                                To ground the object of interest described by the text query,
+                                the robot locates the point most similar to text query along with
+                                the last image it is observed.
+                                If the text is grounded in the image or the point has
+                                high similarity with the text, it will be considered as the location of
+                                the object of interest.
+                            </p>
+                            <p class="block hero-subtext">
+                                If the text is grounded the environment, the robot will navigate to the target object;
+                                otherwise, the robot memory will be projected into a value map and the robot explores the
+                                environment based on the value map.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </section>
 
     <!-- Paper -->
