@@ -17,21 +17,18 @@
         content="DynaMem is an OVMM system adapting a spatio semantic memory to dynamically changing environments.">
     <meta property="og:title" content="DynaMem: Online Dynamic Spatio-Semantic Memory for
     Open World Mobile Manipulation">
-    <meta property="og:site_name"
-        content="DynaMem: Online Dynamic Spatio-Semantic Memory for
+    <meta property="og:site_name" content="DynaMem: Online Dynamic Spatio-Semantic Memory for
         Open World Mobile Manipulation">
     <meta property="og:see_also" content="https:/dynamem.github.io/">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https:/dynamem.github.io/">
-    <meta name="twitter:title"
-        content="DynaMem: Online Dynamic Spatio-Semantic Memory for
+    <meta name="twitter:title" content="DynaMem: Online Dynamic Spatio-Semantic Memory for
         Open World Mobile Manipulation">
     <meta name="twitter:description"
         content="DynaMem is an OVMM system adapting a spatio semantic memory to dynamically changing environments.">
     <meta name="twitter:image" content="https:/dynamem.github.io/mfiles/preview.gif">
-    <meta name="twitter:image:alt"
-        content="DynaMem: Online Dynamic Spatio-Semantic Memory for
+    <meta name="twitter:image:alt" content="DynaMem: Online Dynamic Spatio-Semantic Memory for
         Open World Mobile Manipulation">
     <meta name="twitter:site" content="@LIUPEIQI2">
     <meta name="twitter:player" content="https:/dynamem.github.io/mfiles/mosaic_extended.mp4">
@@ -101,7 +98,7 @@
         }
 
         #failure_chart {
-            width: 50%;
+            /* width: 50%; */
             margin-left: auto;
             margin-right: auto;
         }
@@ -236,7 +233,8 @@
                     <div class="subtitle  is-size-7-mobile is-size-6-tablet block">
                         <p class="authors">
                             <a href="https://peiqi-liu.github.io/" target="_blank">Peiqi Liu</a>,
-                            <a href="https://www.linkedin.com/in/zhanqiu-guo-b932b624b/" target="_blank">Zhanqiu Guo</a>,
+                            <a href="https://www.linkedin.com/in/zhanqiu-guo-b932b624b/" target="_blank">Zhanqiu
+                                Guo</a>,
                             <a href="https://www.linkedin.com/in/mohit-warke/" target="_blank">Mohit Warke</a>,
                             <a href="https://soumith.ch/" target="_blank">Soumith Chintala</a>,
                             <a href="https://cpaxton.github.io/" target="_blank">Chris Paxton</a>,
@@ -359,22 +357,33 @@
                     </div>
                     <div class="subtitle block">
                         <p class="hero-subtext">
-                            Here are sample trials from 3 homes, each showing 3 tasks.
+                            Here are sample trials from 3 lab environments and 2 home environments.
                         </p>
                     </div>
                 </div>
                 <div class="container block">
                     <div class="columns">
-                        <div class="column is-5">
+                        <div class="column is-10">
                             <div class="select" style="display: block;">
                                 <select id="video-home-selection" style="width: 100%;">
                                     <option value="Home 1">Home 1</option>
                                     <option value="Home 2">Home 2</option>
-                                    <option value="Home 3">Home 3</option>
+                                    <option value="Lab - kitchen">Lab: Kitchen</option>
+                                    <option value="Lab - sitting area">Lab: Sitting area</option>
+                                    <option value="Lab - game room">Lab: Game room</option>
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="column is-5">
+                        <!-- <div class="column is-3">
+                            <div class="select" style="display: block;">
+                                <select id="video-home-selection" style="width: 100%;">
+                                    <option value="lab-env-1">Lab environments</option>
+                                    <option value="lab-env-2">Lab environments</option>
+                                    <option value="lab-env-3">Home environments</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-5">
                             <div class="select" style="display: block;">
                                 <select id="video-task-selection" style="width: 100%;">
                                     <option value="0-438">All
@@ -388,14 +397,14 @@
                                     <option value="357-438">Orange Package to Dust Bin</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="column is-2">
                             <button class="button is-info is-outlined" id="shuffle-button" style="width: 100%;">
                                 <span class="icon">
                                     <ion-icon name="shuffle-outline"></ion-icon>
                                 </span>
                                 <span>Shuffle</span>
-                        </div> -->
+                        </div>
                     </div>
 
                 </div>
@@ -423,7 +432,7 @@
                                     }
                                 </style>
                                 <div class='embed-container'><iframe id="youtube-embed"
-                                        src='https://www.youtube.com/embed/oBHzOfUdRnE?fs=0&modestbranding=1&playsinline=1&rel=0&color=white'
+                                        src='https://www.youtube.com/embed/OQKYERcGoWA?fs=0&modestbranding=1&playsinline=1&rel=0&color=white'
                                         frameborder='0' showinfo='0' allowfullscreen></iframe></div>
                             </figure>
                         </div>
@@ -450,8 +459,10 @@
                     <div class="block">
                         <div class="subtitle">
                             <figure class="block">
-                                <img src="mfiles/images/overall.png"
-                                    alt="an illustration of DynaMem" />
+                                <picture>
+                                    <source type="image/avif" srcset="mfiles/images/overall.avif">
+                                    <img src="mfiles/images/overall.jpg" alt="an illustration of DynaMem" />
+                                </picture>
                             </figure>
                             <p class="block hero-subtext">
                                 We maintain a feature pointcloud as the robot memory.
@@ -468,7 +479,8 @@
                             </p>
                             <p class="block hero-subtext">
                                 If the text is grounded the environment, the robot will navigate to the target object;
-                                otherwise, the robot memory will be projected into a value map and the robot explores the
+                                otherwise, the robot memory will be projected into a value map and the robot explores
+                                the
                                 environment based on the value map.
                             </p>
                         </div>
@@ -494,13 +506,16 @@
                     </div>
                     <div class="block">
                         <div class="subtitle">
-                            <figure class="block" id = "failure_chart">
-                                <img src="mfiles/images/failure_analysis.png"
-                                    alt="performance and failure analysis of DynaMem and baselines" />
+                            <figure class="block" id="failure_chart">
+                                <picture>
+                                    <source type="image/avif" srcset="mfiles/images/failure_modes_detailed.avif">
+                                    <img src="mfiles/images/failure_modes_detailed.jpg"
+                                        alt="performance and failure analysis of DynaMem and baselines" />
+                                </picture>
                             </figure>
                             <p class="block hero-subtext">
                                 We evaluate DynaMem in 3 different environments, 10 queries from each environment.
-                                We select OK-Robot (with prescanned static robot memory) and 
+                                We select OK-Robot (with prescanned static robot memory) and
                                 Gemini (utilized following the pipeline proposed in OpenEQA) as baselines.
                             </p>
                             <p class="block hero-subtext">
@@ -508,7 +523,8 @@
                                 is a significant improvement over the OK-Robot system,
                                 which has a total success rate of 30%.
                                 Notably, DynaMem is particularly adept at handling dynamic objects in the environment:
-                                only 6.7% of the trials failed due to our system not being able to navigate to such dynamic objects in the
+                                only 6.7% of the trials failed due to our system not being able to navigate to such
+                                dynamic objects in the
                                 scene.
                             </p>
                         </div>
@@ -531,22 +547,24 @@
                     <div class="subtitle block">
                         <h2 class="hero-subtitle">
                             DynaMem: Online Dynamic Spatio-Semantic Memory for
-        Open World Mobile Manipulations
+                            Open World Mobile Manipulations
                         </h2>
                     </div>
                     <div class="columns">
                         <div class="column is-12-mobile">
                             <a href="#" target="_blank">
                                 <figure class="image">
-                                    <img src="mfiles/images/paper.png" style="max-width: 95vw;" alt="Paper">
+                                    <picture>
+                                        <source type="image/avif" srcset="mfiles/images/paper.avif">
+                                        <img src="mfiles/images/paper.jpg" style="max-width: 95vw;" alt="Paper">
+                                    </picture>
                                 </figure>
                             </a>
                         </div>
                     </div>
                     <div class="columns">
                         <div class="column">
-                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="#">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank" href="#">
                                 <span class="icon">
                                     <img src="mfiles/images/arxiv.svg" style="height: 1.5rem;"></img>
                                 </span>
@@ -573,12 +591,12 @@
                     </div>
                     <div class="content">
                         <pre id="citation-text" style="max-width: 90vw; overflow-x: auto;">
-<!-- @article{liu2024okrobot,
-  title={OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics},
-  author={Liu, Peiqi and Orru, Yaswanth and Paxton, Chris and Shafiullah, Nur Muhammad Mahi and Pinto, Lerrel},
-  journal={arXiv preprint arXiv:2401.12202},
+@article{liu2024okrobot,
+  title={DynaMem: Online Dynamic Spatio-Semantic Memory for Open World Mobile Manipulation},
+  author={Liu, Peiqi and Guo, Zhanqiu and Warke, Mohit and Chintala, Soumith and Shafiullah, Nur Muhammad Mahi and Pinto, Lerrel},
+  journal={arXiv preprint arXiv:2411.12202},
   year={2024}
-} -->
+}
 </pre>
                     </div>
                 </div>
@@ -644,7 +662,8 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>DynaMem</strong> by <a href="https://peiqi-liu.github.io">Peiqi Liu</a> and <a href="https://mahis.life">Mahi Shafiullah</a>.
+                <strong>DynaMem</strong> by <a href="https://peiqi-liu.github.io">Peiqi Liu</a> and <a
+                    href="https://mahis.life">Mahi Shafiullah</a>.
                 The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
                 website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
                 The
@@ -666,14 +685,21 @@
             // "ET": 70
         },
         {
-            "Environment": "Home 2",
+            "Environment": "Lab - kitchen",
+            // "Picking Object": "Purple Medicine",
+            // "Placing Object": "Chair",
+            // "ST": 0,
+            // "ET": 70
+        },
+        {
+            "Environment": "Lab - sitting area",
             // "Picking Object": "Eye glass Case",
             // "Placing Object": "Chair",
             // "ST": 73,
             // "ET": 149
         },
         {
-            "Environment": "Home 3",
+            "Environment": "Lab - game room",
             // "Picking Object": "Grey Rag",
             // "Placing Object": "Sink",
             // "ST": 152,
@@ -691,9 +717,11 @@
     const YTVideoPrefix = "https://www.youtube.com/embed/";
     const YTVideoSuffix = "?fs=0&modestbranding=1&playsinline=1&rel=0&color=white";
     const YTVideoID = {
-        "Home 1": "oBHzOfUdRnE",
-        "Home 2": "qXc-HWhMJAo",
-        "Home 3": "sabw032HgDA",
+        "Home 1": "OQKYERcGoWA",
+        "Home 2": "TYROXQSXZyA",
+        "Lab - kitchen": "oBHzOfUdRnE",
+        "Lab - sitting area": "sabw032HgDA",
+        "Lab - game room": "qXc-HWhMJAo",
     }
 
 
