@@ -1,6 +1,6 @@
 @article{liu2024dynamem,
   title={DynaMem: Online Dynamic Spatio-Semantic Memory for Open World Mobile Manipulation},
   author={Liu, Peiqi and Guo, Zhanqiu and Warke, Mohit and Chintala, Soumith and Shafiullah, Nur Muhammad Mahi and Pinto, Lerrel},
-  journal={arXiv preprint arXiv:2401.12202},
+  journal={arXiv preprint arXiv:2411.04999},
   year={2024}
 }
